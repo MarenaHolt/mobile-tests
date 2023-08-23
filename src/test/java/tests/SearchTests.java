@@ -1,5 +1,6 @@
 package tests;
 
+import com.codeborne.selenide.Condition;
 import io.appium.java_client.AppiumBy;
 import org.junit.jupiter.api.Test;
 
@@ -19,5 +20,17 @@ public class SearchTests extends TestBase {
         step("Verify content found", () ->
                 $$(AppiumBy.id("org.wikipedia.alpha:id/search_container"))
                         .shouldHave(sizeGreaterThan(0)));
+    }
+
+    @Test
+    void errorArticleTest() {
+        step("Type search", () -> {
+            $(AppiumBy.accessibilityId("Search Wikipedia")).click();
+            $(AppiumBy.id("org.wikipedia.alpha:id/search_src_text")).sendKeys("Appium");
+            $$(AppiumBy.id("org.wikipedia.alpha:id/search_container")).get(0).click();
+        });
+        step("Verify content found", () ->
+                $(AppiumBy.id("org.wikipedia.alpha:id/view_wiki_error_text")).
+                        shouldHave(Condition.text("An error occurred")));
     }
 }
