@@ -12,4 +12,7 @@ public interface AuthConfig extends Config {
 
     @Key("password")
     String password();
+
+    @Key("baseUrl")
+    String baseUrl();
 }
