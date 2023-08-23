@@ -16,10 +16,6 @@ public class BrowserstackDriver implements WebDriverProvider {
     @Nonnull
     @Override
     public WebDriver createDriver(@Nonnull Capabilities capabilities) {
-//        AuthConfig config = ConfigFactory.create(AuthConfig.class, System.getProperties());
-//        TestingConfig testingConfig = ConfigFactory.create(TestingConfig.class, System.getProperties());
-//        MobileConfig mobileConfig = ConfigFactory.create(MobileConfig.class, System.getProperties());
-
         BrowserstackConfig config = ConfigFactory.create(BrowserstackConfig.class, System.getProperties());
 
         MutableCapabilities mutableCapabilities = new MutableCapabilities();
